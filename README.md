@@ -152,12 +152,6 @@ This tutorial demonstrates:
 - **Content Type**: text/plain; charset=utf-8
 - **Test Coverage**: 92%
 
-## Technical Details
-
-- **Node.js Version**: v20.19.5 or higher
-- **Express.js Version**: ^4.18.2
-- **Server Port**: 3000
-
 ## License
 
 This is a tutorial project for educational purposes.
