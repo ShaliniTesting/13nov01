@@ -112,35 +112,23 @@ class TestErrorHandling:
         response = client.get('/invalid')
         assert 'text/plain' in response.content_type
         
-    def test_405_for_post_to_root(self, client):
-        """Test that POST / returns HTTP 405 Method Not Allowed."""
+    @pytest.mark.parametrize('method', ['POST', 'PUT', 'DELETE', 'PATCH'])
+    def test_root_rejects_invalid_methods(self, client, method):
+        """Test that / endpoint only accepts GET requests and rejects other HTTP methods with 405."""
+        response = client.open('/', method=method)
+        assert response.status_code == 405, f"{method} to / should return 405, got {response.status_code}"
+        
+    @pytest.mark.parametrize('method', ['POST', 'PUT', 'DELETE', 'PATCH'])
+    def test_evening_rejects_invalid_methods(self, client, method):
+        """Test that /evening endpoint only accepts GET requests and rejects other HTTP methods with 405."""
+        response = client.open('/evening', method=method)
+        assert response.status_code == 405, f"{method} to /evening should return 405, got {response.status_code}"
+        
+    def test_405_response_is_plain_text(self, client):
+        """Test that 405 error response has text/plain content type."""
         response = client.post('/')
         assert response.status_code == 405
-        
-    def test_405_for_put_to_root(self, client):
-        """Test that PUT / returns HTTP 405 Method Not Allowed."""
-        response = client.put('/')
-        assert response.status_code == 405
-        
-    def test_405_for_delete_to_root(self, client):
-        """Test that DELETE / returns HTTP 405 Method Not Allowed."""
-        response = client.delete('/')
-        assert response.status_code == 405
-        
-    def test_405_for_post_to_evening(self, client):
-        """Test that POST /evening returns HTTP 405 Method Not Allowed."""
-        response = client.post('/evening')
-        assert response.status_code == 405
-        
-    def test_405_for_put_to_evening(self, client):
-        """Test that PUT /evening returns HTTP 405 Method Not Allowed."""
-        response = client.put('/evening')
-        assert response.status_code == 405
-        
-    def test_405_for_delete_to_evening(self, client):
-        """Test that DELETE /evening returns HTTP 405 Method Not Allowed."""
-        response = client.delete('/evening')
-        assert response.status_code == 405
+        assert 'text/plain' in response.content_type
 
 
 class TestEdgeCases:
