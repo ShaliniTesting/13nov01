@@ -8,14 +8,14 @@ This application provides two GET endpoints:
 The server runs on port 5000 (Flask default) and includes error handlers for 404 and 405 responses.
 """
 
-from flask import Flask, make_response
+from flask import Flask, make_response, Response
 
 # Initialize Flask application
 app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'])
-def root():
+def root() -> Response:
     """
     Root endpoint handler.
     
@@ -28,7 +28,7 @@ def root():
 
 
 @app.route('/evening', methods=['GET'])
-def evening():
+def evening() -> Response:
     """
     Evening endpoint handler.
     
@@ -41,7 +41,7 @@ def evening():
 
 
 @app.errorhandler(404)
-def not_found(error):
+def not_found(error) -> Response:
     """
     Handle 404 Not Found errors.
     
@@ -57,7 +57,7 @@ def not_found(error):
 
 
 @app.errorhandler(405)
-def method_not_allowed(error):
+def method_not_allowed(error) -> Response:
     """
     Handle 405 Method Not Allowed errors.
     
