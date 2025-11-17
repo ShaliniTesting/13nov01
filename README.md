@@ -114,7 +114,7 @@ Alternatively, you can open these URLs in your web browser:
 
 ## Running Tests
 
-This project includes a comprehensive test suite with 31 tests covering all endpoints, error handling, and edge cases.
+This project includes a comprehensive test suite with 34 tests covering all endpoints, error handling, and edge cases.
 
 ### Run all tests:
 
@@ -129,7 +129,7 @@ pytest tests/ --cov=app --cov-report=term-missing
 ```
 
 ### Expected results:
-- All 31 tests should pass
+- All 34 tests should pass
 - Code coverage: 92% (exceeds 90% threshold)
 
 ## Learning Objectives
