@@ -16,7 +16,7 @@ This project implements a basic Flask server with two GET endpoints that return 
 
 ## Prerequisites
 
-- Python 3.9 or higher (tested with Python 3.12)
+- Python 3.11 or higher
 - pip (Python Package Manager)
 
 ## Installation
@@ -26,7 +26,7 @@ This project implements a basic Flask server with two GET endpoints that return 
 2. Create a virtual environment (recommended):
 
 ```bash
-python3 -m venv venv
+python3.11 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
@@ -146,7 +146,7 @@ This tutorial demonstrates:
 ## Technical Details
 
 - **Framework**: Flask 3.0.0
-- **Python Version**: Python 3.9+ (tested with Python 3.12)
+- **Python Version**: Python 3.11 or higher
 - **Testing Framework**: pytest 7.4.3
 - **Server Port**: 5000 (Flask default)
 - **Content Type**: text/plain; charset=utf-8
